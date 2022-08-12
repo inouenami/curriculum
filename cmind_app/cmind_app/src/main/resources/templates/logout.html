@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<title>ログイン</title>
+<link th:href="@{css/style.css}" rel="stylesheet"></link>
+</head>
+<body>
+	<div class="container">
+		<div class="img">
+			<img class="rog" alt="ロゴ" th:src="@{img/cmindRog.jpg}">
+		</div>
+		<div class="my-3">
+			<h1>ログアウトしました</h1>
+			<a th:href="@{/login}">ログイン画面へ</a>
+		</div>
+	</div>
+	<script src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<script src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>top World!</title>
+<link th:href="@{css/style.css}" rel="stylesheet"></link>
+</head>
+<body>
+<div class="top">
+		<div id="side">
+			<a th:href="@{/top}">
+			<img class="rog" alt="ロゴ" th:src="@{img/cmindRog.jpg}">
+			</a>
+			<table>
+				<tr>
+					<th>トップページ</th>
+				</tr>
+				<tr>
+					<td>〇○○</td>
+				</tr>
+				<tr>
+					<td>〇○○</td>
+				</tr>
+				<tr>
+					<td>〇○○</td>
+				</tr>
+					<tr>
+					<td>
+					<form  th:action="@{/logout}" method="post">
+					<input type="submit" class="btn-primary" value="ログアウト">
+					</form>
+					</td>
+					</tr>
+			</table>
+		</div>
+	<div class="wrapper">
+			<header id="header">
+			<h2 th:text="${name}"></h2>
+				<h2 th:inline="text">ユーザ：[[${#httpServletRequest.remoteUser}]]</h2>
+			<hr>
+			</header>
+		<div class="main">
+		ようこそ
+		</div>
+		<hr>
+			<footer id=footer> 2022/08/02
+			<hr>
+			</footer>
+	</div>
+	</div>
+</body>
+</html>

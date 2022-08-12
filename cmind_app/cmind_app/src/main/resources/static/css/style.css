@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* エラーメッセージの文字色指定 */
+.alert-danger{
+	color: red;
+}
+
+.btn-primary{
+	text-align: right;
+}
+
+form.login{
+	width: 400px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	padding:50px;
+	border: 1px solid black;
+}
+
+.my-3{
+	text-align: center;
+}
+
+.left{
+    float: left;
+    height: 100%;
+
+}
+
+#footer {
+    height: 100%;
+/*     background-color: #f2dede; */
+    text-align: right;
+}
+
+/** header **/
+#header {
+    height: 80px;
+    width: 100%;
+    margin-right:auto;
+/*     background-color: #337ab7; */
+    text-align: right;
+}
+
+.wrapper{
+ justify-content: center;
+/*  background-color: #80ffff; */
+}
+
+.main{
+	display: flex;
+	text-align: center;
+   height: 400px;
+}
+
+#side{
+	height: 100%;
+/*     background-color: #c0c0c0; */
+    width: 30%;
+    float: left;
+}
+.container {
+    float: right;
+    width: 100%;
+    height: 100%;
+
+}
+img.rog{
+	height: 60px;
+	width: 200px;
+}
+
+.top{
+	height: 500px;
+	width: 100%;
+}

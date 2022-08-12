@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
+	
     //フォームの値と比較するDBから取得したパスワードは暗号化されているのでフォームの値も暗号化するために利用
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -48,9 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                //ログインエラー時の遷移先 ※パラメーターに「error」を付与
 	                .failureUrl("/login?error")
 	                //ログイン成功時の遷移先
-	                .defaultSuccessUrl("/top", true)
+	                .defaultSuccessUrl("/hello", true)
 	                //ログイン時のキー：名前
-	                .usernameParameter("employee_id")
+	                .usernameParameter("username")
 	                //ログイン時のパスワード
 	                .passwordParameter("password")
 	            .and()
@@ -65,6 +65,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	      auth.userDetailsService(service);
 	    }
-
-
+	
+		
 }
