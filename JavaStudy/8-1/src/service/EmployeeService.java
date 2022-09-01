@@ -70,7 +70,7 @@ public class EmployeeService {
 			preparedStatement.setString(1, login_time);
 			preparedStatement.setString(2, id);
 			// 問⑤ UPDATEを実行する文を記述
-			preparedStatement.executeLargeUpdate();
+			preparedStatement.executeUpdate();
 
 			/*
 			* UPDATEが成功したものを即座に表示
