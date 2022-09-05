@@ -29,7 +29,7 @@ public final class ConstSQL {
     /** 社員情報一覧取得用クエリ: 削除されていない社員情報を社員番号順に取得 */
     public static final String SELECT_BY_DELETE_FLG_ZERO = " WHERE deleteFlg = '0' ORDER BY empId";
     /** 社員番号を条件とするクエリ: 完全一致 */
-    public static final String SELECT_BY_EMPID = " WHERE empId = ? AND deleteFlg = 0";
+    public static final String SELECT_BY_EMPID = " WHERE deleteFlg = '0' AND empId = ";
 
     /** プリペアードステートメントで使用するクエリの条件値用プレースホルダー */
     public static final String CONST_PLACEHOLDER_FOR_BIND_PARAM = "?";

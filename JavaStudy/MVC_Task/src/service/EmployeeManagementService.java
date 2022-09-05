@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -160,7 +160,7 @@ public final class EmployeeManagementService extends BaseService implements Empl
      * @return resultSet <pre>SQL取得結果</pre>
      * @throws MVCException
      */
-    private void executeSelectQuery(final ExecuteCase eCase, final List<EmployeeBean> pEmployeeBeanList)
+    private ResultSet executeSelectQuery(final ExecuteCase eCase, final List<EmployeeBean> pEmployeeBeanList)
             throws MVCException {
         Logger.logStart(new Throwable());
 
@@ -184,19 +184,16 @@ public final class EmployeeManagementService extends BaseService implements Empl
                 break;
             case FIND_BY_EMPID:
             	sbQuery.append(ConstSQL.SELECT_BY_EMPID);
-
                 // FIXME Step-5-4: pEmployeeBeanListの「1件目の要素のみ」から社員情報を取得しなさい。
                 // Tips1: ループ文を使用すること（正解は複数パターンあります）
                 // Tips2: 格納先はローカル変数のempとすること
                 // [ここへ記述]
             	for(EmployeeBean pEmployee: pEmployeeBeanList) {
 
-
             		System.out.println("EmployeeId:" + pEmployee.getEmpId());
 
-            		emp = new EmployeeBean();
-            		emp.setEmpId(pEmployee.getEmpId());
-//            		emp.setPassword(pEmployee.getPassword());
+            		emp = pEmployee;
+            		break;
             	}
 
 
@@ -204,32 +201,33 @@ public final class EmployeeManagementService extends BaseService implements Empl
                 if (Objects.nonNull(emp)) {
                     Logger.log(new Throwable(), "pEmployeeBeanList[0].empId = " + emp.getEmpId());
 
-                    sbQuery.append(ConstSQL.SELECT_BY_EMPID);
+                    StringBuilder SQL2=sbQuery.append(ConstSQL.CONST_PLACEHOLDER_FOR_BIND_PARAM);
+                    System.out.println("SQLの確認:"+SQL2);
 
                     // FIXME Step-5-5: 以下の手順に沿って適当な処理を記述しなさい。
                     // 1. 上記で構築したSELECT文を引数にして、connectionよりプリペアードステートメントオブジェクトを作成
                     // 2. 1で作成したオブジェクトをpreparedStatementへ格納
                     // Tips: sbQueryは、sbQuery.toString()でStringへ変換
                     // [ここへ記述]
-                    PreparedStatement stmt = this.connection.prepareStatement(sbQuery.toString());
+                    this.preparedStatement = connection.prepareStatement(sbQuery.toString());
 
                     // LIKEを使用するため、パラメータを編集
-//                    final String empId = ExecuteCase.FIND_BY_EMPID_WITH_LIKE.equals(eCase)
-//                            ? ("%" + emp.getEmpId() + "%")
-//                            : emp.getEmpId();
+                    final String empId = ExecuteCase.FIND_BY_EMPID_WITH_LIKE.equals(eCase)
+                            ? ("%" + emp.getEmpId() + "%")
+                            : emp.getEmpId();
 
                     // FIXME Step-5-6: preparedStatementに適切なパラメーターをセットしなさい。
                     // Tips: パラメータをセットするインデックスに注意
                     // [ここへ記述]
-                    stmt.setString(1, emp.getEmpId());
-              //      stmt.setString(2, emp.getPassword());
+                    preparedStatement.setString(1, empId);
+                    System.out.println("パラメータの確認:"+preparedStatement.toString());
 
 
                     // FIXME Step-5-7: preparedStatementよりSQL(SELECT文)を実行し、resultSetへ結果を格納しなさい。
-                    Logger.log(new Throwable(), "SQL: " +  this.preparedStatement.toString());
-                    this.resultSet = stmt.executeQuery();
+                    this.resultSet = preparedStatement.executeQuery();
                     // [ここへ記述]
 
+                    Logger.log(new Throwable(), "SQL: " +  this.preparedStatement.toString());
                 }
                 break;
             default:
@@ -249,6 +247,7 @@ public final class EmployeeManagementService extends BaseService implements Empl
         }
 
         Logger.logEnd(new Throwable());
+		return resultSet;
     }
 
 }

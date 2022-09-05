@@ -47,7 +47,7 @@
     <% if (requestStatus < 2 && !message.isEmpty()) { %>
         <!-- FIXME Step-2-2: 式（Expression）を用いてメッセージ（message）を表示しなさい。 -->
 
-        <p><%= out.print(message) %></p>
+        <p><%= message %></p>
     <% } %>
     <% if (!empResultList.isEmpty()) { %>
     <div class="div-table-list">
@@ -68,11 +68,11 @@
                 <td class="td-marker"></td>
                 <!-- FIXME Step-2-3: 社員情報一覧に表示する内容を式（Expression）を用いて表示しなさい。 -->
                 <!-- Tips: ループにより取得したリスト内の社員情報Beanを使用すること -->
-                <td id="empId">[ここへ記述</td>
-                <td title="<%=emp.getName()%>">[ここへ記述</td>
-                <td title="<%=emp.getMail()%>">[ここへ記述</td>
-                <td title="<%=emp.getProgramingLanguage()%>">[ここへ記述</td>
-                <td title="<%=emp.getComment()%>">[ここへ記述]</td>
+                <td id="empId"><%=emp.getEmpId() %></td>
+                <td title="<%=emp.getName()%>"><%=emp.getName()%></td>
+                <td title="<%=emp.getMail()%>"><%=emp.getMail()%></td>
+                <td title="<%=emp.getProgramingLanguage()%>"><%=emp.getProgramingLanguage()%></td>
+                <td title="<%=emp.getComment()%>"><%=emp.getComment()%></td>
                 <td>
                     <form action="/MVC_Task/employee" method="get">
                         <input type="hidden" name="sender" value="/employeeResult.jsp"></input>
