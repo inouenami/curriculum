@@ -1,6 +1,5 @@
 package service;
 
-import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -160,7 +159,7 @@ public final class EmployeeManagementService extends BaseService implements Empl
      * @return resultSet <pre>SQL取得結果</pre>
      * @throws MVCException
      */
-    private ResultSet executeSelectQuery(final ExecuteCase eCase, final List<EmployeeBean> pEmployeeBeanList)
+    private void executeSelectQuery(final ExecuteCase eCase, final List<EmployeeBean> pEmployeeBeanList)
             throws MVCException {
         Logger.logStart(new Throwable());
 
@@ -247,7 +246,6 @@ public final class EmployeeManagementService extends BaseService implements Empl
         }
 
         Logger.logEnd(new Throwable());
-		return resultSet;
     }
 
 }
