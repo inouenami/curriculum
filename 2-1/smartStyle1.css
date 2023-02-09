@@ -1,20 +1,37 @@
 @media screen and (max-width: 767px) {
+    
+    .wrapper {
+        width: 250px;
+    }
     .header{
         width: 250px;
     }
-    
-    
-    .right{
-        width: 250px;
-    
+    .right {
+        width: 100px;
     }
-    
-    
-    .footer{
+    .footer {
         width: 250px;
     }
-    
-}
 
+}
 @media screen and (max-width: 479px) {
+
+    .header {
+        width: 150px;
+    }
+    .contents {
+        height: 500px;
+    }
+    .left {
+        height: 50%;
+        float: none;
+    }
+    .right {
+        float: none;
+        width: 150px;
+        height: 50%;
+    }
+    .footer {
+        width: 150px;
+    }
 }
